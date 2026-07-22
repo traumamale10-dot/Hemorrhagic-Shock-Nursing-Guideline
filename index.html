@@ -65,9 +65,9 @@ header p{font-size:.78rem;color:var(--ink-soft);font-weight:400}
   box-shadow:0 10px 30px rgba(62,150,214,.12);
 }
 .tab{
-  flex:1;border:none;cursor:pointer;padding:11px 8px;border-radius:999px;
-  font-family:inherit;font-size:.8rem;font-weight:500;color:var(--ink-soft);
-  background:transparent;transition:all .25s ease;line-height:1.25;
+  flex:1;border:none;cursor:pointer;padding:10px 6px;border-radius:999px;
+  font-family:inherit;font-size:.76rem;font-weight:500;color:var(--ink-soft);
+  background:transparent;transition:all .25s ease;line-height:1.2;
 }
 .tab.active{
   background:linear-gradient(135deg,var(--blue),var(--teal));color:#fff;
@@ -314,6 +314,78 @@ input::placeholder{color:#9DB4CB;font-weight:400}
 .scan-video-wrap video{width:100%;height:100%;object-fit:cover;display:block}
 .scan-frame{position:absolute;inset:18% 12%;border:3px solid rgba(78,216,160,.9);border-radius:14px;box-shadow:0 0 0 100vmax rgba(12,27,46,.35);pointer-events:none}
 .scan-msg{font-family:'Sarabun';font-size:.83rem;color:var(--ink-soft);margin:14px 0 6px;line-height:1.5}
+/* ================= DASHBOARD (view-dash) ================= */
+#view-dash .filters{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end}
+#view-dash .fitem{display:flex;flex-direction:column;gap:6px}
+#view-dash .fitem label{font-size:.72rem;font-weight:500;color:var(--ink-soft)}
+#view-dash .fitem input,#view-dash .fitem select{font-family:inherit;font-size:.88rem;color:var(--ink);background:var(--glass-strong);border:1.5px solid var(--glass-border);border-radius:14px;padding:10px 13px;outline:none;font-weight:500}
+#view-dash .fitem input:focus,#view-dash .fitem select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(62,183,240,.2)}
+#view-dash .fitem.ward{flex:1;min-width:190px}
+#view-dash .fitem.ward select{width:100%}
+#view-dash .quick{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+#view-dash .qchip{border:1.5px solid var(--glass-border);background:var(--glass-strong);border-radius:999px;cursor:pointer;font-family:inherit;font-size:.76rem;font-weight:500;color:var(--ink-soft);padding:7px 14px;transition:.15s}
+#view-dash .qchip:hover{color:var(--blue)}
+#view-dash .qchip.active{background:linear-gradient(135deg,var(--blue),var(--teal));color:#fff;border-color:transparent}
+#view-dash .dash-toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:16px}
+#view-dash .xfilters{display:flex;gap:8px;flex-wrap:wrap;flex:1}
+#view-dash .xchip{border:none;cursor:pointer;font-family:inherit;font-size:.74rem;font-weight:500;color:#fff;background:linear-gradient(135deg,var(--blue),var(--teal));border-radius:999px;padding:6px 13px;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 12px rgba(62,183,240,.28)}
+#view-dash .xchip .x{font-weight:700;opacity:.9}
+#view-dash .xchip.clear{background:rgba(120,160,200,.16);color:var(--ink-soft);box-shadow:none}
+#view-dash .exports{display:flex;gap:8px}
+#view-dash .dash-btn{border:1.5px solid var(--glass-border);background:var(--glass-strong);border-radius:14px;cursor:pointer;font-family:inherit;font-size:.78rem;font-weight:600;color:var(--ink);padding:9px 14px;display:inline-flex;align-items:center;gap:7px;transition:.15s}
+#view-dash .dash-btn:hover{color:var(--blue);transform:translateY(-1px)}
+#view-dash .dash-btn svg{width:16px;height:16px;stroke:var(--blue);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+#view-dash .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
+#view-dash .kpi{background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1.5px solid var(--glass-border);border-radius:22px;box-shadow:0 10px 30px rgba(62,150,214,.12);padding:18px}
+#view-dash .kpi .klab{font-size:.7rem;color:var(--ink-soft);font-weight:500;margin-bottom:8px}
+#view-dash .kpi .kval{font-size:2rem;font-weight:700;letter-spacing:-.02em;line-height:1}
+#view-dash .kpi .ksub{font-size:.72rem;color:var(--ink-soft);margin-top:5px;font-family:'Sarabun'}
+#view-dash .kpi.red .kval{color:var(--red)}
+#view-dash .kpi.blue .kval{background:linear-gradient(135deg,var(--blue),var(--teal));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+#view-dash .donut-wrap{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+#view-dash .donut{width:160px;height:160px;flex:0 0 160px}
+#view-dash .legend{flex:1;min-width:180px;display:flex;flex-direction:column;gap:10px}
+#view-dash .lrow{display:flex;align-items:center;gap:11px;cursor:pointer;padding:5px 8px;border-radius:12px;transition:background .15s}
+#view-dash .lrow:hover{background:rgba(120,160,200,.1)}
+#view-dash .lrow.dim{opacity:.4}
+#view-dash .lrow .sw{width:14px;height:14px;border-radius:5px;flex:0 0 14px}
+#view-dash .lrow .lname{font-size:.84rem;font-weight:500;flex:1}
+#view-dash .lrow .lval{font-size:.9rem;font-weight:600}
+#view-dash .lrow .lpct{font-size:.74rem;color:var(--ink-soft);margin-left:6px;font-weight:400}
+#view-dash .legend-inline{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:14px}
+#view-dash .li{display:flex;align-items:center;gap:7px;font-size:.76rem;color:var(--ink-soft);font-weight:500}
+#view-dash .li .sw{width:12px;height:12px;border-radius:4px}
+#view-dash .sw.g,#view-dash .wseg.g,#view-dash .seg.g{background:var(--green)}
+#view-dash .sw.y,#view-dash .wseg.y,#view-dash .seg.y{background:var(--yellow)}
+#view-dash .sw.r,#view-dash .wseg.r,#view-dash .seg.r{background:var(--red)}
+#view-dash .day-scroll,#view-dash .siline-scroll{overflow-x:auto;padding-bottom:6px}
+#view-dash .days{display:flex;gap:8px;align-items:flex-end;min-height:206px;padding-top:6px}
+#view-dash .daycol{flex:0 0 auto;width:34px;display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;border-radius:8px;transition:background .15s}
+#view-dash .daycol:hover{background:rgba(120,160,200,.1)}
+#view-dash .daycol.dim{opacity:.4}
+#view-dash .daybars{width:26px;height:180px;display:flex;flex-direction:column-reverse;border-radius:7px;overflow:hidden;background:rgba(120,160,200,.1)}
+#view-dash .seg{width:100%}
+#view-dash .daylab{font-size:.6rem;color:var(--ink-soft);font-family:'Sarabun';white-space:nowrap;transform:rotate(-45deg);height:22px}
+#view-dash .daytot{font-size:.66rem;font-weight:600;color:var(--ink)}
+#view-dash .wardlist{display:flex;flex-direction:column;gap:14px}
+#view-dash .wrow{display:flex;align-items:center;gap:12px;cursor:pointer;border-radius:10px;padding:3px;transition:background .15s}
+#view-dash .wrow:hover{background:rgba(120,160,200,.1)}
+#view-dash .wname{flex:0 0 152px;font-size:.8rem;font-weight:500;line-height:1.25}
+#view-dash .wbar-wrap{flex:1;display:flex;align-items:center;gap:10px}
+#view-dash .wbar{flex:1;height:22px;border-radius:8px;overflow:hidden;display:flex;background:rgba(120,160,200,.1)}
+#view-dash .wseg{height:100%}
+#view-dash .wcount{flex:0 0 auto;font-size:.82rem;font-weight:600;min-width:26px;text-align:right}
+#view-dash .mini-empty{color:var(--ink-soft);font-family:'Sarabun';font-size:.82rem;padding:10px 2px}
+#view-dash .state{text-align:center;padding:36px 20px;color:var(--ink-soft);font-family:'Sarabun';font-size:.9rem;line-height:1.6}
+#view-dash .state.err{color:var(--red)}
+#view-dash .spinner{width:34px;height:34px;border:3px solid rgba(62,183,240,.25);border-top-color:var(--blue);border-radius:50%;margin:0 auto 14px;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+#view-dash .hidden{display:none!important}
+@media(max-width:640px){
+  #view-dash .kpis{grid-template-columns:1fr 1fr}
+  #view-dash .wname{flex-basis:104px;font-size:.74rem}
+  #view-dash .fitem.ward{min-width:100%}
+}
 /* ---------- back button (care view) ---------- */
 .back-btn{position:sticky;top:10px;z-index:30;display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--glass-border);background:var(--glass-strong);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);color:var(--ink);font-family:inherit;font-size:.82rem;font-weight:500;padding:10px 18px 10px 14px;border-radius:999px;cursor:pointer;box-shadow:0 8px 22px rgba(62,150,214,.18);margin-bottom:16px;transition:transform .15s ease,box-shadow .15s}
 .back-btn:hover{transform:translateX(-2px);box-shadow:0 10px 26px rgba(62,150,214,.26)}
@@ -353,7 +425,7 @@ input::placeholder{color:#9DB4CB;font-weight:400}
 .pane li ul li:before{width:4px;height:4px;top:8px;background:var(--ink-soft);opacity:.55}
 @media(max-width:560px){
   .acc-body{grid-template-columns:1fr}
-  .tab{font-size:.7rem;padding:10px 5px}
+  .tab{font-size:.64rem;padding:9px 4px}
   .acc-letter{flex-basis:38px;width:38px;height:38px;font-size:1.05rem}
 }
 footer{font-size:.7rem;color:var(--ink-soft);text-align:center;margin-top:26px;line-height:1.7;font-family:'Sarabun'}
@@ -381,9 +453,10 @@ footer{font-size:.7rem;color:var(--ink-soft);text-align:center;margin-top:26px;l
 </header>
 
 <div class="tabs">
-  <button class="tab active" data-v="assess">ประเมินระดับช็อก</button>
+  <button class="tab active" data-v="assess">ประเมินช็อก</button>
   <button class="tab" data-v="si">Shock Index</button>
-  <button class="tab" data-v="care">การพยาบาล xABCDE</button>
+  <button class="tab" data-v="care">xABCDE</button>
+  <button class="tab" data-v="dash">Dashboard</button>
 </div>
 
 <!-- ================= VIEW 1 : FULL ASSESSMENT ================= -->
@@ -637,6 +710,84 @@ footer{font-size:.7rem;color:var(--ink-soft);text-align:center;margin-top:26px;l
   <div id="care-acc"></div>
 </div>
 
+<!-- ================= VIEW 4 : DASHBOARD ================= -->
+<div class="view" id="view-dash">
+  <div class="card">
+    <h2><span class="dot"></span>ตัวกรอง</h2>
+    <div class="filters">
+      <div class="fitem"><label>ตั้งแต่วันที่</label><input type="date" id="d-from"></div>
+      <div class="fitem"><label>ถึงวันที่</label><input type="date" id="d-to"></div>
+      <div class="fitem ward"><label>หอผู้ป่วย</label>
+        <select id="d-ward">
+          <option value="">ทุกหอผู้ป่วย</option>
+          <option value="ศัลยกรรมอุบัติเหตุชาย ชั้น 10">ศัลยกรรมอุบัติเหตุชาย ชั้น 10</option>
+          <option value="ศัลยกรรมอุบัติเหตุหญิง ชั้น 9">ศัลยกรรมอุบัติเหตุหญิง ชั้น 9</option>
+          <option value="ศัลยกรรมอุบัติเหตุระบบประสาท 6 ซ้าย">ศัลยกรรมอุบัติเหตุระบบประสาท 6 ซ้าย</option>
+          <option value="Burn">Burn</option>
+          <option value="พิเศษ ฉก.5">พิเศษ ฉก.5</option>
+          <option value="พิเศษ ฉก.6">พิเศษ ฉก.6</option>
+          <option value="พิเศษ สพท 11">พิเศษ สพท 11</option>
+        </select>
+      </div>
+    </div>
+    <div class="quick" id="d-quick">
+      <button class="qchip" data-days="7">7 วัน</button>
+      <button class="qchip active" data-days="30">30 วัน</button>
+      <button class="qchip" data-days="90">90 วัน</button>
+      <button class="qchip" data-days="all">ทั้งหมด</button>
+    </div>
+  </div>
+
+  <div class="card" id="d-loading"><div class="state"><div class="spinner"></div>กำลังโหลดข้อมูลจาก Google Sheet…</div></div>
+  <div class="card hidden" id="d-error"><div class="state err" id="d-error-msg"></div></div>
+  <div class="card hidden" id="d-empty"><div class="state">ยังไม่มีข้อมูลในช่วงวันที่/หอผู้ป่วยที่เลือก</div></div>
+
+  <div id="d-content" class="hidden">
+    <div class="dash-toolbar">
+      <div class="xfilters" id="d-xfilters"></div>
+      <div class="exports">
+        <button class="dash-btn" id="d-csv"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5M12 15V3"/></svg>CSV</button>
+        <button class="dash-btn" id="d-img"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>ภาพ</button>
+      </div>
+    </div>
+
+    <div class="kpis">
+      <div class="kpi blue"><div class="klab">การประเมินทั้งหมด</div><div class="kval" id="d-total">0</div><div class="ksub">ครั้ง</div></div>
+      <div class="kpi red"><div class="klab">เคสวิกฤต (แดง)</div><div class="kval" id="d-red">0</div><div class="ksub" id="d-red-sub">—</div></div>
+      <div class="kpi"><div class="klab">Shock Index เฉลี่ย</div><div class="kval" id="d-si">—</div><div class="ksub">HR / SBP</div></div>
+      <div class="kpi"><div class="klab">อายุเฉลี่ย</div><div class="kval" id="d-age">—</div><div class="ksub">ปี</div></div>
+    </div>
+
+    <div class="card">
+      <h2><span class="dot"></span>สัดส่วนระดับช็อก (รหัสสี)</h2>
+      <div class="donut-wrap"><div class="donut" id="d-donut"></div><div class="legend" id="d-donut-legend"></div></div>
+    </div>
+
+    <div class="card">
+      <h2><span class="dot"></span>สัดส่วน ATLS Class จาก Shock Index</h2>
+      <div class="wardlist" id="d-atls"></div>
+    </div>
+
+    <div class="card">
+      <h2><span class="dot"></span>จำนวนการประเมินรายวัน</h2>
+      <div class="legend-inline"><span class="li"><span class="sw g"></span>เขียว</span><span class="li"><span class="sw y"></span>เหลือง</span><span class="li"><span class="sw r"></span>แดง</span></div>
+      <div class="day-scroll"><div class="days" id="d-days"></div></div>
+    </div>
+
+    <div class="card">
+      <h2><span class="dot"></span>Shock Index เฉลี่ยรายวัน</h2>
+      <div id="d-siline"></div>
+    </div>
+
+    <div class="card">
+      <h2><span class="dot"></span>จำแนกตามหอผู้ป่วย</h2>
+      <div class="legend-inline"><span class="li"><span class="sw g"></span>เขียว</span><span class="li"><span class="sw y"></span>เหลือง</span><span class="li"><span class="sw r"></span>แดง</span></div>
+      <div class="wardlist" id="d-wards"></div>
+    </div>
+    <p style="font-size:.7rem;color:var(--ink-soft);text-align:center;font-family:'Sarabun';margin-top:6px">ไม่แสดงเลข HN ผู้ป่วยเพื่อความเป็นส่วนตัว · <span id="d-updated"></span></p>
+  </div>
+</div>
+
 <div class="scan-modal" id="scan-modal" hidden>
   <div class="scan-box">
     <div class="scan-title">สแกนบาร์โค้ด HN</div>
@@ -662,7 +813,7 @@ footer{font-size:.7rem;color:var(--ink-soft);text-align:center;margin-top:26px;l
 const $=id=>document.getElementById(id);
 
 /* ---------- tabs & cross-links ---------- */
-const TAB_NAME={assess:'ประเมินระดับช็อก',si:'Shock Index',care:'การพยาบาล xABCDE'};
+const TAB_NAME={assess:'ประเมินช็อก',si:'Shock Index',care:'xABCDE',dash:'Dashboard'};
 let careReturnTab='assess';
 function switchTab(v){
   const cur=document.querySelector('.tab.active');
@@ -675,6 +826,7 @@ function switchTab(v){
     const l=$('care-back-label');
     if(l) l.textContent='กลับไปที่ '+(TAB_NAME[careReturnTab]||'หน้าก่อนหน้า');
   }
+  if(v==='dash') DB.ensureLoaded();
 }
 document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>switchTab(t.dataset.v)));
 $('care-back').addEventListener('click',()=>{
@@ -1172,6 +1324,217 @@ renderCare();
 document.querySelectorAll('.xb-row .xb').forEach(b=>{
   b.addEventListener('click',()=>openCareStep(b.dataset.letter));
 });
+
+/* ============================================================
+   DASHBOARD MODULE (แท็บ Dashboard) — ดึงข้อมูลจาก Google Sheet (ตัด HN)
+============================================================ */
+const DB=(function(){
+  const COL={g:'#1FA95C',y:'#E8A200',r:'#E24A4A'};
+  const K={ts:'บันทึกเมื่อ',ward:'หอผู้ป่วย',age:'อายุ',si:'Shock Index',siClass:'ATLS (จาก SI)',cls:'ระดับช็อก (รหัสสี)'};
+  const CSV_COLS=[K.ts,K.ward,K.age,'HR','SBP','DBP','RR','Urine (mL/hr)','Capillary refill','ความรู้สึกตัว','Base deficit','Lactate','GCS-E','GCS-V','GCS-M','GCS รวม',K.si,'Age-SI',K.siClass,K.cls];
+  let ALL=[], loaded=false, xClass=null, xSI=null, xDay=null;
+
+  const classOf=r=>{const c=String(r[K.cls]||'');return c.indexOf('แดง')>=0?'r':c.indexOf('เหลือง')>=0?'y':c.indexOf('เขียว')>=0?'g':'';};
+  const siKey=r=>{const s=String(r[K.siClass]||'');return (s.indexOf('III')>=0||s.indexOf('IV')>=0)?'r':s.indexOf('II')>=0?'y':s.indexOf('I')>=0?'g':'';};
+  const dateOf=r=>String(r[K.ts]||'').slice(0,10);
+  const numOf=v=>{const n=parseFloat(v);return isFinite(n)?n:null;};
+  const avg=a=>a.length?a.reduce((s,v)=>s+v,0)/a.length:null;
+
+  /* ---- โหลดข้อมูล (JSONP เลี่ยง CORS) ---- */
+  function load(){
+    showState('loading');
+    const cb='__shock_cb_'+Date.now(), s=document.createElement('script'); let done=false;
+    window[cb]=res=>{done=true;cleanup();onData(res);};
+    function cleanup(){try{delete window[cb];}catch(e){window[cb]=undefined;}if(s.parentNode)s.parentNode.removeChild(s);}
+    s.onerror=()=>{if(!done){cleanup();showError('โหลดข้อมูลไม่สำเร็จ — ตรวจว่า deploy Web App เวอร์ชันล่าสุด และตั้ง Who has access = Anyone');}};
+    s.src=GAS_URL+'?action=data&callback='+cb+'&_='+Date.now();
+    document.body.appendChild(s);
+    setTimeout(()=>{if(!done){cleanup();showError('หมดเวลาเชื่อมต่อ — ลองรีเฟรช หรือตรวจ URL / การ deploy');}},15000);
+  }
+  function onData(res){
+    if(!res||!res.ok){showError('เซิร์ฟเวอร์ตอบกลับผิดพลาด: '+((res&&res.error)||'ไม่ทราบสาเหตุ'));return;}
+    loaded=true; ALL=res.records||[];
+    $('d-updated').textContent='อัปเดตล่าสุด '+new Date().toLocaleString('th-TH');
+    apply();
+  }
+  function ensureLoaded(){ if(!loaded) load(); }
+
+  /* ---- filter ---- */
+  function base(){
+    const from=$('d-from').value,to=$('d-to').value,ward=$('d-ward').value;
+    return ALL.filter(r=>{const d=dateOf(r);
+      if(from&&d<from)return false; if(to&&d>to)return false;
+      if(ward&&String(r[K.ward]||'')!==ward)return false; return true;});
+  }
+  function effective(){
+    let f=base();
+    if(xClass)f=f.filter(x=>classOf(x)===xClass);
+    if(xSI)f=f.filter(x=>siKey(x)===xSI);
+    if(xDay)f=f.filter(x=>dateOf(x)===xDay);
+    return f;
+  }
+  function apply(){
+    renderChips();
+    if(!base().length){ showState('empty'); return; }
+    showState('content');
+    render(effective());
+  }
+
+  /* ---- cross-filter toggles ---- */
+  function toggleClass(k){xClass=xClass===k?null:k;apply();}
+  function toggleSI(k){xSI=xSI===k?null:k;apply();}
+  function toggleDay(d){xDay=xDay===d?null:d;apply();}
+  function pickWard(w){
+    const sel=$('d-ward'); const opt=[...sel.options].find(o=>o.value===w);
+    if(opt){ sel.value=w; clearQuick(); apply(); }
+  }
+  function renderChips(){
+    const parts=[];
+    if(xClass)parts.push(`<button class="xchip" data-t="class">ระดับ: ${({g:'เขียว',y:'เหลือง',r:'แดง'})[xClass]} <span class="x">✕</span></button>`);
+    if(xSI)parts.push(`<button class="xchip" data-t="si">ATLS(SI): ${({g:'Class I',y:'Class II',r:'Class III–IV'})[xSI]} <span class="x">✕</span></button>`);
+    if(xDay)parts.push(`<button class="xchip" data-t="day">วันที่: ${xDay} <span class="x">✕</span></button>`);
+    if(parts.length>1)parts.push('<button class="xchip clear" data-t="all">ล้างทั้งหมด</button>');
+    const box=$('d-xfilters'); box.innerHTML=parts.join('');
+    box.querySelectorAll('.xchip').forEach(b=>b.addEventListener('click',()=>{
+      const t=b.dataset.t;
+      if(t==='class')xClass=null; else if(t==='si')xSI=null; else if(t==='day')xDay=null;
+      else if(t==='all'){xClass=xSI=xDay=null;}
+      apply();
+    }));
+  }
+
+  /* ---- render ---- */
+  function render(f){
+    let g=0,y=0,r=0; f.forEach(x=>{const c=classOf(x);if(c==='g')g++;else if(c==='y')y++;else if(c==='r')r++;});
+    const total=f.length;
+    $('d-total').textContent=total;
+    $('d-red').textContent=r;
+    $('d-red-sub').textContent=total?('คิดเป็น '+Math.round(r/total*100)+'%'):'—';
+    const asi=avg(f.map(x=>numOf(x[K.si])).filter(v=>v!==null));
+    $('d-si').textContent=asi!==null?asi.toFixed(2):'—';
+    const aage=avg(f.map(x=>numOf(x[K.age])).filter(v=>v!==null));
+    $('d-age').textContent=aage!==null?Math.round(aage):'—';
+    renderDonut(g,y,r);
+    renderATLS(f);
+    renderDays(f);
+    renderSILine(f);
+    renderWards(f);
+  }
+
+  function renderDonut(g,y,r){
+    const total=g+y+r,R=54,C=2*Math.PI*R,cx=80,cy=80; let off=0,arcs='';
+    [['g',g],['y',y],['r',r]].forEach(([k,v])=>{if(v<=0)return;const len=v/(total||1)*C;
+      arcs+=`<circle cx="${cx}" cy="${cy}" r="${R}" fill="none" stroke="${COL[k]}" stroke-width="22" stroke-dasharray="${len} ${C-len}" stroke-dashoffset="${-off}" transform="rotate(-90 ${cx} ${cy})"/>`;off+=len;});
+    $('d-donut').innerHTML=`<svg viewBox="0 0 160 160" width="160" height="160"><circle cx="${cx}" cy="${cy}" r="${R}" fill="none" stroke="rgba(120,160,200,.14)" stroke-width="22"/>${arcs}<text x="${cx}" y="${cy-3}" text-anchor="middle" font-size="30" font-weight="700" fill="#1E3A5F">${total}</text><text x="${cx}" y="${cy+18}" text-anchor="middle" font-size="12" fill="#4A6FA0">ครั้ง</text></svg>`;
+    const rows=[['เขียว · Class I','g',g],['เหลือง · Class II','y',y],['แดง · Class III–IV','r',r]];
+    $('d-donut-legend').innerHTML=rows.map(([name,k,v])=>`<div class="lrow${xClass&&xClass!==k?' dim':''}" data-k="${k}"><span class="sw" style="background:${COL[k]}"></span><span class="lname">${name}</span><span class="lval" style="color:${COL[k]}">${v}<span class="lpct">${total?Math.round(v/total*100):0}%</span></span></div>`).join('');
+    $('d-donut-legend').querySelectorAll('.lrow').forEach(el=>el.addEventListener('click',()=>toggleClass(el.dataset.k)));
+  }
+
+  function renderATLS(f){
+    let g=0,y=0,r=0; f.forEach(x=>{const k=siKey(x);if(k==='g')g++;else if(k==='y')y++;else if(k==='r')r++;});
+    const rows=[['Class I','g',g],['Class II','y',y],['Class III–IV','r',r]], max=Math.max(1,g,y,r);
+    $('d-atls').innerHTML=rows.map(([name,k,v])=>`<div class="wrow${xSI&&xSI!==k?' dim':''}" data-si="${k}"><div class="wname">${name}</div><div class="wbar-wrap"><div class="wbar"><div class="wseg ${k}" style="width:${v/max*100}%"></div></div><div class="wcount">${v}</div></div></div>`).join('');
+    $('d-atls').querySelectorAll('[data-si]').forEach(el=>el.addEventListener('click',()=>toggleSI(el.dataset.si)));
+  }
+
+  function renderDays(f){
+    const map={}; f.forEach(x=>{const d=dateOf(x);if(!d)return;(map[d]=map[d]||{g:0,y:0,r:0})[classOf(x)||'g']++;});
+    const dates=Object.keys(map).sort(), maxT=Math.max(1,...dates.map(d=>map[d].g+map[d].y+map[d].r)),H=180;
+    $('d-days').innerHTML=dates.map(d=>{const o=map[d],t=o.g+o.y+o.r,h=k=>Math.round(o[k]/maxT*H);
+      return `<div class="daycol${xDay&&xDay!==d?' dim':''}" data-d="${d}"><div class="daytot">${t}</div><div class="daybars"><div class="seg g" style="height:${h('g')}px"></div><div class="seg y" style="height:${h('y')}px"></div><div class="seg r" style="height:${h('r')}px"></div></div><div class="daylab">${d.slice(8,10)}/${d.slice(5,7)}</div></div>`;
+    }).join('')||'<div class="mini-empty">ไม่มีข้อมูล</div>';
+    $('d-days').querySelectorAll('[data-d]').forEach(el=>el.addEventListener('click',()=>toggleDay(el.dataset.d)));
+  }
+
+  function renderSILine(f){
+    const map={}; f.forEach(x=>{const v=numOf(x[K.si]);if(v===null)return;const d=dateOf(x);(map[d]=map[d]||[]).push(v);});
+    const days=Object.keys(map).sort(), box=$('d-siline');
+    if(!days.length){box.innerHTML='<div class="mini-empty">ไม่มีข้อมูล Shock Index</div>';return;}
+    const avgs=days.map(d=>avg(map[d])), maxY=Math.max(1.2,...avgs)*1.1;
+    const W=Math.max(days.length*52,300),H=185,padL=32,padB=28,padT=12;
+    const X=i=>days.length===1?W/2:padL+i*(W-padL-14)/(days.length-1);
+    const Y=v=>padT+(1-v/maxY)*(H-padT-padB);
+    const y1=Y(1.0);
+    const line=avgs.map((v,i)=>X(i)+','+Y(v)).join(' ');
+    const dots=avgs.map((v,i)=>`<circle class="sipt" data-d="${days[i]}" cx="${X(i)}" cy="${Y(v)}" r="5" fill="${v>=1?COL.r:v>=0.8?COL.y:COL.g}" stroke="#fff" stroke-width="2" style="cursor:pointer"/>`).join('');
+    const step=Math.max(1,Math.ceil(days.length/12));
+    const labs=days.map((d,i)=>i%step===0?`<text x="${X(i)}" y="${H-9}" text-anchor="middle" font-size="9" fill="#4A6FA0">${d.slice(8,10)}/${d.slice(5,7)}</text>`:'').join('');
+    box.innerHTML=`<div class="siline-scroll"><svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}"><line x1="${padL}" y1="${y1}" x2="${W}" y2="${y1}" stroke="${COL.r}" stroke-dasharray="4 4" stroke-width="1.5" opacity=".55"/><text x="${padL+2}" y="${y1-4}" font-size="9" fill="${COL.r}">SI 1.0</text><polyline points="${line}" fill="none" stroke="#3EB7F0" stroke-width="2.5" stroke-linejoin="round"/>${dots}${labs}<text x="3" y="${padT+7}" font-size="9" fill="#4A6FA0">${maxY.toFixed(1)}</text></svg></div>`;
+    box.querySelectorAll('.sipt').forEach(p=>p.addEventListener('click',()=>toggleDay(p.dataset.d)));
+  }
+
+  function renderWards(f){
+    const map={}; f.forEach(x=>{const w=String(x[K.ward]||'ไม่ระบุ');(map[w]=map[w]||{g:0,y:0,r:0})[classOf(x)||'g']++;});
+    const wards=Object.keys(map).map(w=>({w,...map[w],t:map[w].g+map[w].y+map[w].r})).sort((a,b)=>b.t-a.t);
+    const maxT=Math.max(1,...wards.map(x=>x.t));
+    $('d-wards').innerHTML=wards.map(x=>`<div class="wrow" data-w="${x.w.replace(/"/g,'&quot;')}"><div class="wname">${x.w}</div><div class="wbar-wrap"><div class="wbar"><div class="wseg g" style="width:${x.g/maxT*100}%"></div><div class="wseg y" style="width:${x.y/maxT*100}%"></div><div class="wseg r" style="width:${x.r/maxT*100}%"></div></div><div class="wcount">${x.t}</div></div></div>`).join('')||'<div class="mini-empty">ไม่มีข้อมูล</div>';
+    $('d-wards').querySelectorAll('[data-w]').forEach(el=>el.addEventListener('click',()=>pickWard(el.dataset.w)));
+  }
+
+  /* ---- export ---- */
+  function stamp(){const d=new Date(),p=n=>String(n).padStart(2,'0');return d.getFullYear()+p(d.getMonth()+1)+p(d.getDate())+'_'+p(d.getHours())+p(d.getMinutes());}
+  function downloadBlob(blob,name){const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),1000);}
+  function exportCSV(){
+    const f=effective(); if(!f.length)return;
+    const esc=v=>{v=(v==null?'':String(v));return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v;};
+    const rows=[CSV_COLS.join(',')].concat(f.map(r=>CSV_COLS.map(c=>esc(r[c])).join(',')));
+    downloadBlob(new Blob(['\ufeff'+rows.join('\r\n')],{type:'text/csv;charset=utf-8'}),'shock-dashboard-'+stamp()+'.csv');
+  }
+  function exportImage(){
+    const svg=buildReportSVG();
+    const url=URL.createObjectURL(new Blob([svg],{type:'image/svg+xml;charset=utf-8'}));
+    const img=new Image();
+    img.onload=()=>{const sc=2,cv=document.createElement('canvas');cv.width=900*sc;cv.height=560*sc;const c=cv.getContext('2d');c.scale(sc,sc);c.fillStyle='#EAF6FC';c.fillRect(0,0,900,560);c.drawImage(img,0,0);URL.revokeObjectURL(url);cv.toBlob(b=>downloadBlob(b,'shock-dashboard-'+stamp()+'.png'),'image/png');};
+    img.onerror=()=>{URL.revokeObjectURL(url);showError('สร้างรูปไม่สำเร็จ ลองใหม่อีกครั้ง');};
+    img.src=url;
+  }
+  function buildReportSVG(){
+    const f=effective(); let g=0,y=0,r=0; f.forEach(x=>{const c=classOf(x);if(c==='g')g++;else if(c==='y')y++;else if(c==='r')r++;});
+    let sg=0,sy=0,sr=0; f.forEach(x=>{const k=siKey(x);if(k==='g')sg++;else if(k==='y')sy++;else if(k==='r')sr++;});
+    const total=f.length,asi=avg(f.map(x=>numOf(x[K.si])).filter(v=>v!==null)),aage=avg(f.map(x=>numOf(x[K.age])).filter(v=>v!==null));
+    const from=$('d-from').value||'—',to=$('d-to').value||'—',ward=$('d-ward').value||'ทุกหอผู้ป่วย';
+    const R=52,C=2*Math.PI*R,cx=180,cy=330; let off=0,arcs='';
+    [['g',g],['y',y],['r',r]].forEach(([k,v])=>{if(v<=0)return;const len=v/(total||1)*C;arcs+=`<circle cx="${cx}" cy="${cy}" r="${R}" fill="none" stroke="${COL[k]}" stroke-width="22" stroke-dasharray="${len} ${C-len}" stroke-dashoffset="${-off}" transform="rotate(-90 ${cx} ${cy})"/>`;off+=len;});
+    const kpi=(x,lab,val,col)=>`<rect x="${x}" y="150" width="195" height="86" rx="16" fill="#ffffff"/><text x="${x+18}" y="180" font-size="13" fill="#4A6FA0">${lab}</text><text x="${x+18}" y="216" font-size="30" font-weight="700" fill="${col||'#1E3A5F'}">${val}</text>`;
+    const legend=(yy,name,k,v)=>`<rect x="300" y="${yy}" width="16" height="16" rx="4" fill="${COL[k]}"/><text x="326" y="${yy+13}" font-size="15" fill="#1E3A5F">${name}</text><text x="620" y="${yy+13}" font-size="15" font-weight="700" fill="${COL[k]}" text-anchor="end">${v}  (${total?Math.round(v/total*100):0}%)</text>`;
+    const sibar=(yy,name,k,v)=>{const mx=Math.max(1,sg,sy,sr);return `<text x="640" y="${yy+13}" font-size="14" fill="#1E3A5F">${name}</text><rect x="740" y="${yy}" width="120" height="16" rx="6" fill="rgba(120,160,200,.15)"/><rect x="740" y="${yy}" width="${v/mx*120}" height="16" rx="6" fill="${COL[k]}"/><text x="865" y="${yy+13}" font-size="13" font-weight="700" fill="#1E3A5F">${v}</text>`;};
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560" font-family="Sarabun, Tahoma, sans-serif">
+      <rect width="900" height="560" rx="24" fill="#EAF6FC"/>
+      <text x="40" y="52" font-size="24" font-weight="700" fill="#1E3A5F">Dashboard · ภาวะช็อกจากการเสียเลือด</text>
+      <text x="40" y="80" font-size="14" fill="#4A6FA0">กลุ่มงานศัลยกรรมอุบัติเหตุ · รพ.มหาราชนครราชสีมา</text>
+      <text x="40" y="112" font-size="14" fill="#1E3A5F">ช่วงวันที่: ${from} ถึง ${to}   |   หอผู้ป่วย: ${ward}</text>
+      ${kpi(40,'การประเมินทั้งหมด',total,'#2E9BD6')}
+      ${kpi(245,'เคสวิกฤต (แดง)',r,'#E24A4A')}
+      ${kpi(450,'Shock Index เฉลี่ย',asi!==null?asi.toFixed(2):'—')}
+      ${kpi(655,'อายุเฉลี่ย',aage!==null?Math.round(aage):'—')}
+      <rect x="40" y="270" width="820" height="250" rx="18" fill="#ffffff"/>
+      <text x="64" y="302" font-size="16" font-weight="600" fill="#1E3A5F">สัดส่วนระดับช็อก (รหัสสี)</text>
+      <circle cx="${cx}" cy="${cy}" r="${R}" fill="none" stroke="rgba(120,160,200,.14)" stroke-width="22"/>${arcs}
+      <text x="${cx}" y="${cy-2}" text-anchor="middle" font-size="26" font-weight="700" fill="#1E3A5F">${total}</text><text x="${cx}" y="${cy+18}" text-anchor="middle" font-size="12" fill="#4A6FA0">ครั้ง</text>
+      ${legend(300,'เขียว · Class I','g',g)}${legend(336,'เหลือง · Class II','y',y)}${legend(372,'แดง · Class III–IV','r',r)}
+      <text x="640" y="316" font-size="16" font-weight="600" fill="#1E3A5F">ATLS Class จาก Shock Index</text>
+      ${sibar(336,'Class I','g',sg)}${sibar(372,'Class II','y',sy)}${sibar(408,'Class III–IV','r',sr)}
+      <text x="40" y="548" font-size="12" fill="#4A6FA0">ไม่แสดง HN ผู้ป่วย · สร้างเมื่อ ${new Date().toLocaleString('th-TH')}</text>
+    </svg>`;
+  }
+
+  /* ---- states & controls ---- */
+  function showState(which){['d-loading','d-error','d-empty','d-content'].forEach(id=>$(id).classList.toggle('hidden',id!=='d-'+which));}
+  function showError(m){$('d-error-msg').textContent=m;showState('error');}
+  function ymd(d){const p=n=>String(n).padStart(2,'0');return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate());}
+  function setRange(days){const to=new Date();if(days==='all'){$('d-from').value='';$('d-to').value='';return;}const from=new Date();from.setDate(from.getDate()-(days-1));$('d-from').value=ymd(from);$('d-to').value=ymd(to);}
+  function clearQuick(){document.querySelectorAll('#d-quick .qchip').forEach(x=>x.classList.remove('active'));}
+
+  $('d-quick').addEventListener('click',e=>{const b=e.target.closest('.qchip');if(!b)return;clearQuick();b.classList.add('active');setRange(b.dataset.days==='all'?'all':+b.dataset.days);apply();});
+  ['d-from','d-to','d-ward'].forEach(id=>$(id).addEventListener('change',()=>{clearQuick();apply();}));
+  $('d-csv').addEventListener('click',exportCSV);
+  $('d-img').addEventListener('click',exportImage);
+  setRange(30); // ค่าเริ่มต้น 30 วัน
+
+  return { ensureLoaded };
+})();
+
 
 </script>
 </body>
