@@ -178,6 +178,41 @@ input::placeholder{color:#9DB4CB;font-weight:400}
   font-size:.8rem;font-weight:500;padding:10px 24px;border-radius:999px;transition:.2s;
 }
 .btn-clear:hover{color:var(--red);border-color:var(--red)}
+.hd-spacer{flex:1}
+/* ---------- login screen ---------- */
+.app-hidden{display:none!important}
+#login-screen{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:24px;
+  background:linear-gradient(160deg,#DCF2FB 0%,#CBE7F8 42%,#D2F3E5 100%)}
+#login-screen.hidden{display:none}
+.login-card{background:var(--glass);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border:1.5px solid var(--glass-border);border-radius:30px;box-shadow:0 20px 60px rgba(62,150,214,.25);
+  padding:34px 28px;width:100%;max-width:380px;text-align:center}
+.login-card .logo{width:76px;height:76px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center}
+.login-card .logo img{width:100%;height:100%;object-fit:contain}
+.login-title{font-size:1.1rem;font-weight:600;color:var(--ink)}
+.login-sub{font-size:.76rem;color:var(--ink-soft);margin-bottom:22px;font-family:'Sarabun'}
+.login-field{text-align:left;margin-bottom:14px}
+.login-field label{display:block;font-size:.74rem;font-weight:500;color:var(--ink-soft);margin-bottom:6px}
+.login-field input{width:100%;font-family:inherit;font-size:.92rem;color:var(--ink);background:var(--glass-strong);
+  border:1.5px solid var(--glass-border);border-radius:15px;padding:12px 15px;outline:none;font-weight:500}
+.login-field input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(62,183,240,.2)}
+.login-err{color:var(--red);font-size:.8rem;font-family:'Sarabun';min-height:20px;margin-bottom:6px;line-height:1.4}
+.login-btn{width:100%;border:none;cursor:pointer;font-family:inherit;font-size:.95rem;font-weight:600;color:#fff;
+  background:linear-gradient(135deg,var(--blue),var(--teal));border-radius:16px;padding:14px;margin-top:4px;
+  box-shadow:0 8px 20px rgba(62,183,240,.35);transition:transform .15s,opacity .2s}
+.login-btn:hover{transform:translateY(-1px)}
+.login-btn:disabled{opacity:.6;cursor:default;transform:none}
+/* ---------- user chip ---------- */
+.user-chip{display:flex;align-items:center;gap:10px}
+.user-meta{text-align:right;line-height:1.2}
+.user-meta span{display:block;font-size:.82rem;font-weight:600;color:var(--ink)}
+.user-meta small{font-size:.68rem;color:var(--ink-soft)}
+.logout-btn{width:40px;height:40px;flex:0 0 40px;border:1.5px solid var(--glass-border);background:var(--glass-strong);
+  border-radius:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.15s}
+.logout-btn:hover{border-color:var(--red)}
+.logout-btn svg{width:19px;height:19px;stroke:var(--ink-soft);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.logout-btn:hover svg{stroke:var(--red)}
+@media(max-width:560px){.user-meta span{font-size:.76rem}.user-meta small{font-size:.62rem}}
 /* ---------- monitoring plan ---------- */
 .mon-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:6px}
 .mon-badge{font-size:.72rem;font-weight:600;padding:6px 14px;border-radius:999px;color:#fff}
@@ -440,7 +475,21 @@ footer{font-size:.7rem;color:var(--ink-soft);text-align:center;margin-top:26px;l
 </head>
 <body>
 <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
-<div class="wrap">
+
+<!-- ================= LOGIN ================= -->
+<div id="login-screen">
+  <div class="login-card">
+    <div class="logo"><img id="login-logo" alt="โลโก้ รพ."></div>
+    <h1 class="login-title">Hypovolemic Shock Assessment</h1>
+    <p class="login-sub">กลุ่มงานศัลยกรรมอุบัติเหตุ · รพ.มหาราชนครราชสีมา</p>
+    <div class="login-field"><label>ชื่อผู้ใช้</label><input type="text" id="login-user" autocomplete="username" autocapitalize="off" placeholder="เช่น male10"></div>
+    <div class="login-field"><label>รหัสผ่าน</label><input type="password" id="login-pass" autocomplete="current-password" placeholder="รหัสผ่าน"></div>
+    <div class="login-err" id="login-err"></div>
+    <button class="login-btn" id="login-btn">เข้าสู่ระบบ</button>
+  </div>
+</div>
+
+<div class="wrap app-hidden" id="app-wrap">
 
 <header>
   <div class="logo">
@@ -449,6 +498,13 @@ footer{font-size:.7rem;color:var(--ink-soft);text-align:center;margin-top:26px;l
   <div>
     <h1>Hypovolemic Shock Assessment</h1>
     <p>กลุ่มงานศัลยกรรมอุบัติเหตุ · รพ.มหาราชนครราชสีมา</p>
+  </div>
+  <div class="hd-spacer"></div>
+  <div class="user-chip">
+    <div class="user-meta"><span id="user-name">—</span><small id="user-role">—</small></div>
+    <button class="logout-btn" id="logout-btn" title="ออกจากระบบ" aria-label="ออกจากระบบ">
+      <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></svg>
+    </button>
   </div>
 </header>
 
@@ -717,7 +773,7 @@ footer{font-size:.7rem;color:var(--ink-soft);text-align:center;margin-top:26px;l
     <div class="filters">
       <div class="fitem"><label>ตั้งแต่วันที่</label><input type="date" id="d-from"></div>
       <div class="fitem"><label>ถึงวันที่</label><input type="date" id="d-to"></div>
-      <div class="fitem ward"><label>หอผู้ป่วย</label>
+      <div class="fitem ward" id="d-ward-item"><label>หอผู้ป่วย</label>
         <select id="d-ward">
           <option value="">ทุกหอผู้ป่วย</option>
           <option value="ศัลยกรรมอุบัติเหตุชาย ชั้น 10">ศัลยกรรมอุบัติเหตุชาย ชั้น 10</option>
@@ -811,6 +867,7 @@ footer{font-size:.7rem;color:var(--ink-soft);text-align:center;margin-top:26px;l
 </script>
 <script>
 const $=id=>document.getElementById(id);
+let AUTH=null; // {token, role, ward, name}
 
 /* ---------- tabs & cross-links ---------- */
 const TAB_NAME={assess:'ประเมินช็อก',si:'Shock Index',care:'xABCDE',dash:'Dashboard'};
@@ -1196,12 +1253,15 @@ async function saveToSheet(){
   const rec=getRecord();
   if(!rec.hn){ setStatus('err','กรุณากรอก/สแกน HN ก่อนบันทึก'); return; }
   if(!currentOverall){ setStatus('err','กรุณากรอกข้อมูลให้ประเมินระดับช็อกได้ก่อนบันทึก'); return; }
+  if(!AUTH){ setStatus('err','กรุณาเข้าสู่ระบบก่อนบันทึก'); logout(); return; }
   if(!GAS_URL){ setStatus('info','ยังไม่ได้ตั้งค่า URL — เปิดไฟล์แล้วใส่ค่า GAS_URL ในสคริปต์ (ดูวิธีใน Code.gs)'); return; }
   rec.savedAt=new Date().toISOString();
+  rec.token=AUTH.token;
   const btn=$('a-save'); btn.disabled=true; setStatus('info','กำลังบันทึก…');
   try{
     const res=await fetch(GAS_URL,{method:'POST',body:JSON.stringify(rec)});
     let out=null; try{ out=await res.json(); }catch(_){}
+    if(out && out.auth){ setStatus('err','เซสชันหมดอายุ กรุณาเข้าสู่ระบบใหม่'); btn.disabled=false; logout(); return; }
     if(out && out.ok) setStatus('ok','บันทึกสำเร็จ · HN '+rec.hn+(out.row?(' (แถวที่ '+out.row+')'):''));
     else if(out && out.error) setStatus('err','บันทึกไม่สำเร็จ: '+out.error);
     else setStatus('ok','ส่งข้อมูลแล้ว · HN '+rec.hn);
@@ -1347,17 +1407,19 @@ const DB=(function(){
     window[cb]=res=>{done=true;cleanup();onData(res);};
     function cleanup(){try{delete window[cb];}catch(e){window[cb]=undefined;}if(s.parentNode)s.parentNode.removeChild(s);}
     s.onerror=()=>{if(!done){cleanup();showError('โหลดข้อมูลไม่สำเร็จ — ตรวจว่า deploy Web App เวอร์ชันล่าสุด และตั้ง Who has access = Anyone');}};
-    s.src=GAS_URL+'?action=data&callback='+cb+'&_='+Date.now();
+    s.src=GAS_URL+'?action=data&callback='+cb+'&token='+encodeURIComponent(AUTH?AUTH.token:'')+'&_='+Date.now();
     document.body.appendChild(s);
     setTimeout(()=>{if(!done){cleanup();showError('หมดเวลาเชื่อมต่อ — ลองรีเฟรช หรือตรวจ URL / การ deploy');}},15000);
   }
   function onData(res){
+    if(res && res.auth){ logout(); return; }
     if(!res||!res.ok){showError('เซิร์ฟเวอร์ตอบกลับผิดพลาด: '+((res&&res.error)||'ไม่ทราบสาเหตุ'));return;}
     loaded=true; ALL=res.records||[];
     $('d-updated').textContent='อัปเดตล่าสุด '+new Date().toLocaleString('th-TH');
     apply();
   }
   function ensureLoaded(){ if(!loaded) load(); }
+  function reset(){ loaded=false; ALL=[]; xClass=xSI=xDay=null; }
 
   /* ---- filter ---- */
   function base(){
@@ -1532,7 +1594,75 @@ const DB=(function(){
   $('d-img').addEventListener('click',exportImage);
   setRange(30); // ค่าเริ่มต้น 30 วัน
 
-  return { ensureLoaded };
+  return { ensureLoaded, reset };
+})();
+
+/* ============================================================
+   AUTH — เข้าสู่ระบบ (7 Ward + 1 Admin) ตรวจสอบที่ Google Apps Script
+============================================================ */
+function loginError(m){ $('login-err').textContent=m||''; }
+
+function applyAuth(){
+  $('login-screen').classList.add('hidden');
+  $('app-wrap').classList.remove('app-hidden');
+  $('user-name').textContent=AUTH.name||AUTH.ward||'ผู้ใช้';
+  $('user-role').textContent=AUTH.role==='admin'?'ผู้ดูแลระบบ · เห็นทุกหอ':(AUTH.ward||'หอผู้ป่วย');
+  const ward=$('a-ward');
+  if(AUTH.role!=='admin'){
+    ward.value=AUTH.ward; ward.disabled=true;         // ล็อกหอผู้ป่วยตามบัญชี
+    const dwi=$('d-ward-item'); if(dwi) dwi.style.display='none'; // ซ่อนตัวกรองหอใน dashboard
+    $('d-ward').value='';
+  }else{
+    ward.disabled=false;
+    const dwi=$('d-ward-item'); if(dwi) dwi.style.display='';
+  }
+  assess();
+}
+
+async function doLogin(){
+  const u=$('login-user').value.trim(), p=$('login-pass').value;
+  if(!u||!p){ loginError('กรุณากรอกชื่อผู้ใช้และรหัสผ่าน'); return; }
+  if(!GAS_URL){ loginError('ยังไม่ได้ตั้งค่า GAS_URL ในไฟล์'); return; }
+  const btn=$('login-btn'); btn.disabled=true; loginError(''); btn.textContent='กำลังเข้าสู่ระบบ…';
+  try{
+    const res=await fetch(GAS_URL,{method:'POST',body:JSON.stringify({action:'login',username:u,password:p})});
+    const out=await res.json();
+    if(out && out.ok){
+      AUTH={token:out.token,role:out.role,ward:out.ward,name:out.name};
+      try{ sessionStorage.setItem('shock_auth',JSON.stringify(AUTH)); }catch(e){}
+      DB.reset();
+      $('login-pass').value='';
+      applyAuth();
+    }else{
+      loginError((out&&out.error)||'เข้าสู่ระบบไม่สำเร็จ');
+    }
+  }catch(e){
+    loginError('เชื่อมต่อไม่ได้ — ตรวจสอบอินเทอร์เน็ต หรือ URL/การ deploy ของ Apps Script');
+  }finally{ btn.disabled=false; btn.textContent='เข้าสู่ระบบ'; }
+}
+
+function logout(){
+  AUTH=null;
+  try{ sessionStorage.removeItem('shock_auth'); }catch(e){}
+  DB.reset();
+  $('app-wrap').classList.add('app-hidden');
+  $('login-screen').classList.remove('hidden');
+  $('login-user').value=''; $('login-pass').value=''; loginError('');
+  switchTab('assess');
+}
+
+$('login-btn').addEventListener('click',doLogin);
+$('login-pass').addEventListener('keydown',e=>{ if(e.key==='Enter') doLogin(); });
+$('login-user').addEventListener('keydown',e=>{ if(e.key==='Enter') $('login-pass').focus(); });
+$('logout-btn').addEventListener('click',logout);
+
+/* init: โลโก้หน้า login (ใช้ตัวเดียวกับ header) + ตรวจเซสชันเดิม */
+(function initAuth(){
+  const hdrLogo=document.querySelector('header .logo img');
+  if(hdrLogo) $('login-logo').src=hdrLogo.src;
+  let saved=null;
+  try{ saved=JSON.parse(sessionStorage.getItem('shock_auth')||'null'); }catch(e){}
+  if(saved && saved.token){ AUTH=saved; applyAuth(); }
 })();
 
 
